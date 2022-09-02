@@ -4,7 +4,7 @@ import java.util.Map;
 public class HasmapTest02 {
     public static void main(String[] args) {
         Consumidor consumidor1 = new Consumidor("Breno Martins");
-        Consumidor consumidor2 = new Consumidor("Yasmim Santos");
+        Consumidor consumidor2 = new Consumidor("Rin Santos");
         System.out.println(consumidor1);
         System.out.println(consumidor2);
 

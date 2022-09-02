@@ -5,7 +5,7 @@ import java.util.Map;
 public class HashmapTest03 {
     public static void main(String[] args) {
         Consumidor consumidor1 = new Consumidor("Breno Martins");
-        Consumidor consumidor2 = new Consumidor("Yasmim Santos");
+        Consumidor consumidor2 = new Consumidor("Fate Santos");
 //        System.out.println(consumidor1);
 //        System.out.println(consumidor2);
 

@@ -3,10 +3,17 @@ package Streams;
 public class Lightnovel {
     private String title;
     private double price;
+    private Category category;
 
     public Lightnovel(String title, double price) {
         this.title = title;
         this.price = price;
+    }
+
+    public Lightnovel(String title, double price, Category category) {
+        this.title = title;
+        this.price = price;
+        this.category = category;
     }
 
     public String getTitle() {
@@ -25,11 +32,21 @@ public class Lightnovel {
         this.price = price;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
     @Override
     public String toString() {
         return "Lightnovel{" +
                 "title='" + title + '\'' +
                 ", price=" + price +
+                ", category=" + category +
                 '}';
     }
+
 }

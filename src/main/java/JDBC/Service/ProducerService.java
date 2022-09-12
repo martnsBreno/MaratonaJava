@@ -10,6 +10,10 @@ public class ProducerService {
         ProducerRepository.save(producer);
     }
 
+    public static void saveTransaction(List<producer> producers) {
+        ProducerRepository.saveTransaction(producers);
+    }
+
     public static void delete(int id) {
         ProducerRepository.delete(id);
     }

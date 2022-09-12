@@ -21,6 +21,34 @@ public class ProducerRepository {
         }
     }
 
+    public static void saveTransaction(List<producer> producers) {
+        try (Connection conn = ConnectionFactory.getConnection()) {
+            conn.setAutoCommit(false);
+            preparedStatementSaveTransaction(conn, producers);
+            conn.commit();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void preparedStatementSaveTransaction(Connection connection, List<producer> producers) throws SQLException {
+        String sql1 = "INSERT INTO `anime_store`.`producer` (`name`) VALUES ( ? );";
+        boolean shouldRollBack = false;
+        for (producer p :
+                producers) {
+            System.out.println("Salvando :" + p.getName());
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql1)){
+                preparedStatement.setString(1, p.getName());
+                preparedStatement.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                shouldRollBack = true;
+            }
+        }
+        if (shouldRollBack) connection.rollback();
+    }
+
+
     public static void delete(int idproducer) {
         String sql = "DELETE FROM `anime_store`.`producer` WHERE (`idproducer` = '%d');".formatted(idproducer);
         try (Connection conn = ConnectionFactory.getConnection(); Statement smt = conn.createStatement()) {
